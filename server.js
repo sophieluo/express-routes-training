@@ -22,6 +22,9 @@ app.use(bodyParser.urlencoded({ extended: false }));
 
 // ROUTES
 // Root Route
+app.get('/', function (req, res) {
+  res.sendFile('views/index.html', { root: __dirname});
+});
 
 
 // Gallery View Route
