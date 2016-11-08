@@ -22,14 +22,14 @@ app.use(bodyParser.urlencoded({ extended: false }));
 
 // ROUTES
 // Root Route
+var targetNumber = 10;
+
 app.get('/', function (req, res) {
   res.sendFile('views/index.html', { root: __dirname});
 });
 
 app.get('/pickanumber', function (req, res) {
-  var targetNumber = 10;
   var x = req.query.number;
-  
   if (x>targetNumber) {
     res.send("Too high!")
   }
@@ -43,7 +43,11 @@ app.get('/pickanumber', function (req, res) {
 
 
 // The Number Guessing Game
-
+// app.post('/pickanumber', function numbersCreate(req, res) {
+//   var number= req.body.number;
+//   // albums.push(newAlbum);
+//   // res.json(albums)
+// })
 
 // Gallery
 
