@@ -7,7 +7,7 @@ $('#guess-number-form').on('submit', function(event){
 
   $.ajax({
     method: 'GET',
-    url: '/pickanumber',
+    url: '/pick-a-number',
     success: onSuccess,
     error: onError,
     data: $('#guess-number-form').serialize(),

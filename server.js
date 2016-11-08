@@ -22,17 +22,20 @@ app.use(bodyParser.urlencoded({ extended: false }));
 
 // ROUTES
 // Root Route
-var targetNumber = 10;
 
 app.get('/', function (req, res) {
   res.sendFile('views/index.html', { root: __dirname});
 });
 
 // Gallery View Route
-
+app.get('/art-gallery', function (req, res) {
+  res.sendFile('views/art-gallery.html', { root: __dirname});
+});
 
 // The Number Guessing Game
-app.get('/pickanumber', function (req, res) {
+var targetNumber = 10;
+
+app.get('/pick-a-number', function (req, res) {
   var x = parseInt(req.query.number);
   if (x>targetNumber) {
     res.send("Too high!")
@@ -46,11 +49,31 @@ app.get('/pickanumber', function (req, res) {
 app.post('/pick-a-number', function (req, res) {
   targetNumber = parseInt(req.body.number);
   res.send("updated!");
-  console.log(targetNumber);
+  //console.log(targetNumber);
 })
 
 // Gallery
 
+var artworks = [
+  {
+    title:123,
+    artist:123,
+    description:123
+  }
+];
+
+app.get('/artworks', function (req, res) {
+  res.json(artworks);
+});
+
+app.post('/artworks', function artworkCreate(req, res) {
+  var title = res.body.title;
+  var artist = res.body.artist;
+  var description = res.body.description;
+  var newArtwork = { title:title, artist:artist, description:description };
+  artworks.push(newArtwork);
+  res.json(artworks);
+});
 
 // SERVER START
 var port = 3000;
