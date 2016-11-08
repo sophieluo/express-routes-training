@@ -26,17 +26,17 @@ app.get('/', function (req, res) {
   res.sendFile('views/index.html', { root: __dirname});
 });
 
-app.get('/pickanumber', function (req, res) {
-  var targetNumber = 10;
-  var x = req.query.number;
-  
-  if (x>targetNumber) {
-    res.send("Too high!")
-  }
-  else if (x<targetNumber) {
-    res.send("Too low!")
-  }
-  else res.send("Nailed it!")
+app.get('/pickanumber', function (req. res) {
+  // var targetNumber = 10;
+  // var x = req.query.number;
+  res.send('hello')
+  // if (x>targetNumber) {
+  //   res.send("Too high!")
+  // }
+  // else if (x<targetNumber) {
+  //   res.send("Too low!")
+  // }
+  // else res.send("Nailed it!")
 })
 
 // Gallery View Route
