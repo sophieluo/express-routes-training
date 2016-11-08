@@ -14,9 +14,28 @@ $('#guess-number-form').on('submit', function(event){
   });
 
   function onSuccess(json) {
-    //console.log(json)
     $('#high-low-correct').html(json)
 
+  }
+
+  function onError(xhr, status, errorThrown) {
+    console.log("error!")
+  }
+});
+
+$('#target-number-form').on('submit', function(event){
+    event.preventDefault();
+
+  $.ajax({
+    method: 'POST',
+    url: '/pick-a-number',
+    success: onSuccess,
+    error: onError,
+    data: $('#target-number-form').serialize(),
+  });
+
+  function onSuccess(json) {
+    console.log(json);
   }
 
   function onError(xhr, status, errorThrown) {

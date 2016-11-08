@@ -28,8 +28,12 @@ app.get('/', function (req, res) {
   res.sendFile('views/index.html', { root: __dirname});
 });
 
+// Gallery View Route
+
+
+// The Number Guessing Game
 app.get('/pickanumber', function (req, res) {
-  var x = req.query.number;
+  var x = parseInt(req.query.number);
   if (x>targetNumber) {
     res.send("Too high!")
   }
@@ -39,15 +43,11 @@ app.get('/pickanumber', function (req, res) {
   else res.send("Nailed it!")
 })
 
-// Gallery View Route
-
-
-// The Number Guessing Game
-// app.post('/pickanumber', function numbersCreate(req, res) {
-//   var number= req.body.number;
-//   // albums.push(newAlbum);
-//   // res.json(albums)
-// })
+app.post('/pick-a-number', function (req, res) {
+  targetNumber = parseInt(req.body.number);
+  res.send("updated!");
+  console.log(targetNumber);
+})
 
 // Gallery
 
